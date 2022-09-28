@@ -1,0 +1,39 @@
+
+ query PostQuery ($last: Int, $first:Int, $before:String, $after:String , $categoryId:Int ){
+
+        posts (last: $last, first: $first,before: $before,after: $after, where:{categoryId: $categoryId})
+        
+
+      {
+          nodes {
+            slug
+            commentCount
+            date
+            title
+            excerpt
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            author {
+              node {
+                name
+              }
+            }
+            categories {
+              nodes {
+                 categoryId
+                 
+                 name
+              }
+            }
+          }
+          pageInfo {
+            endCursor
+            startCursor
+            hasNextPage
+            hasPreviousPage
+          }
+        }
+      }
